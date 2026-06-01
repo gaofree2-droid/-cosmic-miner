@@ -141,105 +141,105 @@
 
   // ===== TOAST =====
   var toastTimer=null;
-  function showToast(msg,duration){duration=duration||1800;toast.textContent=msg;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){toast.classList.remove('show')},duration)}
+  function showToast(msg,duration){duration=duration||1800;toast.textContent=msg;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){toast.classList.remove('show')},duration)}函数showToast(味精、持续时间){时间=时间| | 1800;toast.textContent =味精;toast.classList.add(“秀”);clearTimeout (toastTimer); toastTimer = setTimeout(函数(){toast.classList.remove(显示)},持续时间)}
 
-  // ===== COIN RAIN =====
-  function coinRain(count){count=count||15;var container=document.createElement('div');container.className='coin-rain';document.body.appendChild(container);var emojis=['🪙','✨','💎','⭐'];for(var i=0;i<count;i++){var el=document.createElement('div');el.className='coin-drop';el.textContent=emojis[i%emojis.length];el.style.left=Math.random()*90+'%';el.style.animationDelay=Math.random()*0.4+'s';el.style.fontSize=(18+Math.random()*14)+'px';container.appendChild(el)}setTimeout(function(){container.remove()},2000)}
+  // ===== COIN RAIN =====// ===== coin rain =====
+  function coinRain(count){count=count||15;var container=document.createElement('div');container.className='coin-rain';document.body.appendChild(container);var emojis=['🪙','✨','💎','⭐'];for(var i=0;i<count;i++){var el=document.createElement('div');el.className='coin-drop';el.textContent=emojis[i%emojis.length];el.style.left=Math.random()*90+'%';el.style.animationDelay=Math.random()*0.4+'s';el.style.fontSize=(18+Math.random()*14)+'px';container.appendChild(el)}setTimeout(function(){container.remove()},2000)}函数coinRain(计数){count =计数| | 15;var = document.createElement容器(div); container.className   类名称 =“coin-rain”;document.body   身体.appendChild(容器);var emojis =[‘🪙’,‘✨’,‘💎’,‘⭐’);for(var i=0;i<count;i){var el=document.createElement('div');el. classname ='coin-drop';el. textcontent =emojis[i%emojis.length]；el.style   风格. animationdelay =Math.random()*0.4 's'；字形大小=(18数学。随机()* 14)“px”;container.appendChild (el)} setTimeout(函数(){container.remove ()}, 2000)}
 
-  // ===== TAP =====
-  function handleTap(e){
-    if(state.energy<1){showToast('⚡ 能量不足！看广告恢复能量');return}
+  // ===== TAP =====   // =====点击=====
+  function handleTap(e){   函数handleTap (e) {
+    if(state.energy<1){showToast('⚡ 能量不足！看广告恢复能量');return}if(state.energy<1){showToast('⚡ 能量不足！看广告恢复能量');return   返回}
     state.energy=Math.max(0,state.energy-1);
-    var earned=state.coinPerTap*state.multiplier;state.coins+=earned;state.xp+=earned;
-    while(state.xp>=state.xpToNext){state.xp-=state.xpToNext;state.level++;state.xpToNext=Math.floor(100*Math.pow(1.25,state.level-1));state.coinPerTap=1+(state.level-1)*0.5;state.maxEnergy=100+(state.level-1)*10;state.energy=state.maxEnergy;showToast('🎉 升级！达到 Lv.'+state.level);coinRain(20)}
-    var flash=document.createElement('div');flash.className='mine-flash';asteroid.appendChild(flash);setTimeout(function(){flash.remove()},200);
-    var particle=document.createElement('div');particle.className='tap-particle';particle.textContent='+'+(Math.floor(earned));
+    var earned=state.coinPerTap*state.multiplier;state.coins+=earned;state.xp+=earned;var获得= state.coinPerTap * state.multiplier;状态。硬币=获得;状态。xp =赚;
+    while(state.xp>=state.xpToNext){state.xp-=state.xpToNext;state.level++;state.xpToNext=Math.floor(100*Math.pow(1.25,state.level-1));state.coinPerTap=1+(state.level-1)*0.5;state.maxEnergy=100+(state.level-1)*10;state.energy=state.maxEnergy;showToast('🎉 升级！达到 Lv.'+state.level);coinRain(20)}while(state.xp>=state.xpToNext){state.xp-=state.xpToNext;state.level  ;state.xpToNext=Math.floor(100*Math.pow(1.25,state.level-1));state.coinPerTap=1 (state.level-1)*0.5;state.maxEnergy=100 (state.level-1)*10;state.energy=state.maxEnergy;showToast('🎉 升级！达到 Lv.' state.level);coinRain(20)}
+    var flash=document.createElement('div');flash.className='mine-flash';asteroid.appendChild(flash);setTimeout(function(){flash.remove()},200);var flash = document.createElement (div); flash.className   类名称 =“mine-flash”;asteroid.appendChild (flash); setTimeout(函数(){flash.remove ()}, 200);
+    var particle=document.createElement('div');particle.className='tap-particle';particle.textContent='+'+(Math.floor(earned));var粒子= document.createElement (div); particle.className   类名称 =“tap-particle”;粒子。textContent=' ' (Math.floor(earned))；
     var rect=asteroid.getBoundingClientRect();var appRect=document.getElementById('app').getBoundingClientRect();
-    particle.style.left=(rect.left-appRect.left+rect.width/2-20+(Math.random()-0.5)*60)+'px';particle.style.top=(rect.top-appRect.top+rect.height/2-20)+'px';tapArea.appendChild(particle);setTimeout(function(){particle.remove()},800);
-    if(Math.random()<0.05)coinRain(5);updateUI();saveGame();
+    particle.style.left=(rect.left-appRect.left+rect.width/2-20+(Math.random()-0.5)*60)+'px';particle.style.top=(rect.top-appRect.top+rect.height/2-20)+'px';tapArea.appendChild(particle);setTimeout(function(){particle.remove()},800);particle.style   风格.left = (rect.left-appRect。left rect.width   宽度/2-20 (Math.random()-0.5)*60) 'px'；tapArea.appendChild(particle);setTimeout(function   函数(){particle.remove()},800)；
+    if(Math.random()<0.05)coinRain(5);updateUI();saveGame();如果(math . random () & lt; 0.05) coinRain (5); updateUI (); saveGame ();
   }
 
   // ===== ENERGY REGEN =====
-  setInterval(function(){if(state.energy<state.maxEnergy){state.energy=Math.min(state.maxEnergy,state.energy+state.energyRegenRate);updateUI();saveGame()}},state.energyRegenInterval);
-  setInterval(function(){if(state.multiplier>1&&Date.now()>state.multiplierEnd){state.multiplier=1;state.multiplierTimer=null;showToast('⏱️ 加成已结束');updateUI();saveGame()}},1000);
+  setInterval(function(){if(state.energy<state.maxEnergy){state.energy=Math.min(state.maxEnergy,state.energy+state.energyRegenRate);updateUI();saveGame()}},state.energyRegenInterval);setInterval(函数(){如果(state.energy< state.maxEnergy) {state.energy = Math.min (state.maxEnergy,状态。能源state.energyRegenRate); updateUI (); saveGame ()}}, state.energyRegenInterval);
+  setInterval(function(){if(state.multiplier>1&&Date.now()>state.multiplierEnd){state.multiplier=1;state.multiplierTimer=null;showToast('⏱️ 加成已结束');updateUI();saveGame()}},1000);setInterval(function   函数(){if(state.multiplier>1&&Date.now()>state.multiplierEnd){state.multiplier=1;state.multiplierTimer=null;showToast('⏱️ 加成已结束');updateUI();saveGame()}},1000);
 
-  // ===== ADSGRAM: Rewarded Video =====
-  function showWatchAdModal(){watchAdModal.classList.add('active')}
-  function closeModal(){watchAdModal.classList.remove('active')}
+  // ===== ADSGRAM: Rewarded Video =====// ===== ADSGRAM：奖励视频=====
+  function showWatchAdModal(){watchAdModal.classList.add('active')}函数showWatchAdModal () {watchAdModal.classList.add(“活跃的”)}
+  function closeModal(){watchAdModal.classList.remove('active')}函数closeModal () {watchAdModal.classList.remove(“活跃的”)}
 
-  function watchAd(){
+  function   超文本标记语言 watchAd(){   函数watchAd () {
     closeModal();
-    $('watchAdConfirm').disabled = true;
+    $('watchAdConfirm').disabled = true;$ (' watchAdConfirm ')。Disabled = true；
 
-    if (window.Adsgram && ADSGRAM_BLOCK_ID !== '31903') {
+    if (window.Adsgram && ADSGRAM_BLOCK_ID !== '31903') {如果窗口。ADSGRAM_BLOCK_ID ！== '31903') {
       showToast('📺 正在加载广告...');
-      try {
-        Adsgram.init({ blockId: ADSGRAM_BLOCK_ID });
-        Adsgram.show({ type: 'reward' }).then(function(result){
-          $('watchAdConfirm').disabled = false;
-          if (result && result.done) { grantAdReward(); }
+      try {   尝试{
+        Adsgram.init({ blockId: ADSGRAM_BLOCK_ID });Adsgram。init({blockId: ADSGRAM_BLOCK_ID})；
+        Adsgram.show({ type: 'reward' }).then(function(result){Adsgram。Show ({type: 'reward'}).then(function   函数(result){
+          $('watchAdConfirm').disabled = false;$ (' watchAdConfirm ')。Disabled = false；
+          if (result && result.done) { grantAdReward(); }如果(result && result。done) {grantAdReward()；……
           else { showToast('⚠️ 广告未完成，请完整观看'); }
-        }).catch(function(err){
-          $('watchAdConfirm').disabled = false;
-          console.log('Adsgram error:', err);
+        }).catch(function(err){   }) .catch(函数(err) {
+          $('watchAdConfirm').disabled = false;$ (' watchAdConfirm ')。Disabled = false；
+          console.log('Adsgram error:', err);console.log('Adsgram error:', err)；
           showToast('⚠️ 广告加载失败，请稍后再试');
         });
       } catch(e) {
-        $('watchAdConfirm').disabled = false;
+        $('watchAdConfirm').disabled = false;$ (' watchAdConfirm ')。Disabled = false；
         showToast('⚠️ 广告暂不可用');
       }
     } else {
-      // Fallback: no ADSGRAM configured
+      // Fallback: no ADSGRAM configured// Fallback：未配置ADSGRAM
       showToast('📺 正在播放广告...');
-      setTimeout(function(){ grantAdReward(); $('watchAdConfirm').disabled = false; }, 1500);
+      setTimeout(function(){ grantAdReward(); $('watchAdConfirm').disabled = false; }, 1500);setTimeout(函数(){grantAdReward ();$ (' watchAdConfirm ')。Disabled = false；}, 1500);
     }
   }
 
-  function grantAdReward(){
-    state.energy=state.maxEnergy;state.coins+=50;state.xp+=50;state.adWatchCount++;
-    if(state.multiplierTimer)clearTimeout(state.multiplierTimer);
-    state.multiplier=2;state.multiplierEnd=Date.now()+10000;
-    showToast('🎉 奖励已领取！能量全满 + 50金币 + 2x加成10s！');coinRain(25);updateUI();saveGame();
-    while(state.xp>=state.xpToNext){state.xp-=state.xpToNext;state.level++;state.xpToNext=Math.floor(100*Math.pow(1.25,state.level-1));state.coinPerTap=1+(state.level-1)*0.5;state.maxEnergy=100+(state.level-1)*10;state.energy=state.maxEnergy;showToast('🎉 升级！达到 Lv.'+state.level);coinRain(20)}
+  function grantAdReward(){   函数grantAdReward () {
+    state.energy=state.maxEnergy;state.coins+=50;state.xp+=50;state.adWatchCount++;state.energy=state.maxEnergy;state.coins =50;state.xp =50;state.adWatchCount  ;
+    if(state.multiplierTimer)clearTimeout(state.multiplierTimer);如果state.multiplierTimer clearTimeout (state.multiplierTimer);
+    state.multiplier=2;state.multiplierEnd=Date.now()+10000;state.multiplier = 2; state.multiplierEnd =日期。现在(10000年);
+    showToast('🎉 奖励已领取！能量全满 + 50金币 + 2x加成10s！');coinRain(25);updateUI();saveGame();showToast('🎉 奖励已领取！能量全满   50金币   2x加成10s！');coinRain(25);updateUI();saveGame();
+    while(state.xp>=state.xpToNext){state.xp-=state.xpToNext;state.level++;state.xpToNext=Math.floor(100*Math.pow(1.25,state.level-1));state.coinPerTap=1+(state.level-1)*0.5;state.maxEnergy=100+(state.level-1)*10;state.energy=state.maxEnergy;showToast('🎉 升级！达到 Lv.'+state.level);coinRain(20)}while(state.xp>=state.xpToNext){state.xp-=state.xpToNext;state.level  ;state.xpToNext=Math.floor(100*Math.pow(1.25,state.level-1));state.coinPerTap=1 (state.level-1)*0.5;state.maxEnergy=100 (state.level-1)*10;state.energy=state.maxEnergy;showToast('🎉 升级！达到 Lv.' state.level);coinRain(20)}
   }
 
   // ===== ADSGRAM: Banner =====
-  function initBannerAd(){
-    if (window.Adsgram && ADSGRAM_BLOCK_ID !== '31903') {
-      try {
-        Adsgram.init({ blockId: ADSGRAM_BLOCK_ID });
+  function initBannerAd(){   函数initBannerAd () {
+    if (window.Adsgram && ADSGRAM_BLOCK_ID !== '31903') {如果窗口。ADSGRAM_BLOCK_ID ！== '31903') {
+      try {   尝试{
+        Adsgram.init({ blockId: ADSGRAM_BLOCK_ID });Adsgram。init({blockId: ADSGRAM_BLOCK_ID})；
         Adsgram.showBanner({ container: '#bannerAd' });
         bannerAdText.textContent = '';
-      } catch(e){
+      } catch(e){   }捕捉(e) {
         bannerAdText.textContent = '📢 横幅广告位';
       }
     } else {
-      bannerAdText.textContent = '📢 横幅广告位 — 接入ADSGRAM后生效';
+      bannerAdText.textContent = '📢 横幅广告位 — 接入ADSGRAM后生效';bannerAdText.textContent = '📢 横幅广告位 — 接入ADSGRAM后生效';
     }
   }
 
-  // ===== INIT =====
+  // ===== INIT =====   // ===== init =====
   bannerAd.addEventListener('click',function(){showToast('📢 横幅广告位')});
 
-  function init(){
+  function init(){   init()函数{
     loadGame();
-    if(user.first_name){userName.textContent=user.first_name||'Miner';avatar.textContent=(user.first_name[0]||'👤').toUpperCase()}
+    if(user.first_name){userName.textContent=user.first_name||'Miner';avatar.textContent=(user.first_name[0]||'👤').toUpperCase()}如果(user.first_name) {userName.textContent = user.first_name | |“矿工”;avatar.textContent = (user.first_name[0] | |👤).toUpperCase ()}
     updateUI();
-    asteroid.addEventListener('pointerdown',handleTap);
-    $('adRewardBtn').addEventListener('click',showWatchAdModal);
-    $('watchAdConfirm').addEventListener('click',watchAd);
-    $('watchAdCancel').addEventListener('click',closeModal);
-    watchAdModal.addEventListener('click',function(e){if(e.target===watchAdModal)closeModal()});
+    asteroid.addEventListener('pointerdown',handleTap);asteroid.addEventListener——handleTap pointerdown”;
+    $('adRewardBtn').addEventListener('click',showWatchAdModal);$ (' adRewardBtn ') .addEventListener(“点击”,showWatchAdModal);
+    $('watchAdConfirm').addEventListener('click',watchAd);$ (' watchAdConfirm ') .addEventListener(“点击”,watchAd);
+    $('watchAdCancel').addEventListener('click',closeModal);$ (' watchAdCancel ') .addEventListener(“点击”,closeModal);
+    watchAdModal.addEventListener('click',function(e){if(e.target===watchAdModal)closeModal()});watchAdModal.addEventListener(“点击”,函数(e){如果(e。target = = = watchAdModal) closeModal ()});
     setInterval(saveGame,10000);
-    // Starfield
+    // Starfield   / /星际
     var sf=$('starfield');
-    for(var i=0;i<80;i++){var star=document.createElement('div');star.className='star';var size=1+Math.random()*2.5;star.style.width=size+'px';star.style.height=size+'px';star.style.left=Math.random()*100+'%';star.style.top=Math.random()*100+'%';star.style.setProperty('--dur',(2+Math.random()*4)+'s');star.style.animationDelay=Math.random()*4+'s';sf.appendChild(star)}
-    // ADSGRAM banner
+    for(var i=0;i<80;i++){var star=document.createElement('div');star.className='star';var size=1+Math.random()*2.5;star.style.width=size+'px';star.style.height=size+'px';star.style.left=Math.random()*100+'%';star.style.top=Math.random()*100+'%';star.style.setProperty('--dur',(2+Math.random()*4)+'s');star.style.animationDelay=Math.random()*4+'s';sf.appendChild(star)}for(var i=0;i<80;i){var star   明星=document.createElement('div');star   明星. classname ='star'；var size=1 Math.random()*2.5；宽度=大小的px; star   明星.style。身高=大小的px; star   明星.style   风格.left =数学。随机()* 100‘%’;star   明星.style   风格.top =数学。随机()* 100‘%’;star   明星.style。setProperty(——大调的,(2数学。随机()* 4)' s '); star   明星.style   风格.animationDelay =数学。随机()* 4 s; sf.appendChild(明星)}
+    // ADSGRAM banner   // ADSGRAM横幅
     setTimeout(initBannerAd, 2000);
   }
 
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init)}else{init()}
 })();
-</script>
-</body>
-</html>
+</script>   < / script>
+</body>   < / body>
+</html>   < / html>
