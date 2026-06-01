@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0a0b1a">
-<title>⚡ Cosmic Miner — Telegram Mini Game</title>
+<title>�?Cosmic Miner �?Telegram Mini Game</title>
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   html,body{width:100%;height:100%;overflow:hidden;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0a0b1a;color:#e0e8f0;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
@@ -80,14 +80,14 @@
   </div>
   <div class="coin-display">
     <div class="coin-count">🪙 <span id="coinCount">0</span></div>
-    <div class="energy-display">⚡ <span id="energyText">100/100</span><div class="energy-bar-bg"><div class="energy-bar-fill" id="energyFill"></div></div></div>
+    <div class="energy-display">�?<span id="energyText">100/100</span><div class="energy-bar-bg"><div class="energy-bar-fill" id="energyFill"></div></div></div>
   </div>
   <div class="tap-area" id="tapArea">
     <div class="asteroid" id="asteroid"><div class="asteroid-cracks"></div><div class="asteroid-inner">💎</div></div>
   </div>
   <div class="bottom-area">
     <button class="ad-reward-btn" id="adRewardBtn"><div class="shimmer"></div><span class="icon">📺</span><span>看广告得奖励</span><span class="badge">🔥</span></button>
-    <div class="banner-ad" id="bannerAd"><span class="ad-label">AD</span><span id="bannerAdText">📢 广告加载中...</span></div>
+    <div class="banner-ad" id="bannerAd"><span class="ad-label">AD</span><span id="bannerAdText">📢 ADSGRAM 广告�?/span></div>
   </div>
 </div>
 <div class="modal-overlay" id="watchAdModal">
@@ -95,7 +95,7 @@
     <h2>📺 观看广告</h2>
     <p>观看一个短视频，即可获得以下奖励！</p>
     <div class="modal-rewards">
-      <div class="modal-reward-item"><span class="r-icon">⚡</span><div class="r-label">能量全满</div></div>
+      <div class="modal-reward-item"><span class="r-icon">�?/span><div class="r-label">能量全满</div></div>
       <div class="modal-reward-item"><span class="r-icon">🪙</span><div class="r-label">+50 金币</div></div>
       <div class="modal-reward-item"><span class="r-icon">🚀</span><div class="r-label">2x 收益 10s</div></div>
     </div>
@@ -136,7 +136,7 @@ var ADSGRAM_BLOCK_ID = '31903'; // <-- 替换为ADSGRAM后台的Block ID
     xpFill.style.width=(state.xp/state.xpToNext)*100+'%';xpLabel.textContent=Math.floor(state.xp)+'/'+state.xpToNext;
     levelBadge.textContent='Lv.'+state.level;
     var adBtn=$('adRewardBtn');
-    if(state.multiplier>1){var remain=Math.ceil((state.multiplierEnd-Date.now())/1000);adBtn.innerHTML='<div class="shimmer"></div><span class="icon">🚀</span><span>加成中 '+remain+'s</span><span class="badge">'+state.multiplier+'x</span>'}
+    if(state.multiplier>1){var remain=Math.ceil((state.multiplierEnd-Date.now())/1000);adBtn.innerHTML='<div class="shimmer"></div><span class="icon">🚀</span><span>加成�?'+remain+'s</span><span class="badge">'+state.multiplier+'x</span>'}
     else{adBtn.innerHTML='<div class="shimmer"></div><span class="icon">📺</span><span>看广告得奖励</span><span class="badge">🔥</span>'}
   }
 
@@ -145,14 +145,14 @@ var ADSGRAM_BLOCK_ID = '31903'; // <-- 替换为ADSGRAM后台的Block ID
   function showToast(msg,duration){duration=duration||1800;toast.textContent=msg;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){toast.classList.remove('show')},duration)}
 
   // ===== COIN RAIN =====
-  function coinRain(count){count=count||15;var container=document.createElement('div');container.className='coin-rain';document.body.appendChild(container);var emojis=['🪙','✨','💎','⭐'];for(var i=0;i<count;i++){var el=document.createElement('div');el.className='coin-drop';el.textContent=emojis[i%emojis.length];el.style.left=Math.random()*90+'%';el.style.animationDelay=Math.random()*0.4+'s';el.style.fontSize=(18+Math.random()*14)+'px';container.appendChild(el)}setTimeout(function(){container.remove()},2000)}
+  function coinRain(count){count=count||15;var container=document.createElement('div');container.className='coin-rain';document.body.appendChild(container);var emojis=['🪙','�?,'💎','�?];for(var i=0;i<count;i++){var el=document.createElement('div');el.className='coin-drop';el.textContent=emojis[i%emojis.length];el.style.left=Math.random()*90+'%';el.style.animationDelay=Math.random()*0.4+'s';el.style.fontSize=(18+Math.random()*14)+'px';container.appendChild(el)}setTimeout(function(){container.remove()},2000)}
 
   // ===== TAP =====
   function handleTap(e){
-    if(state.energy<1){showToast('⚡ 能量不足！看广告恢复能量');return}
+    if(state.energy<1){showToast('�?能量不足！看广告恢复能量');return}
     state.energy=Math.max(0,state.energy-1);
     var earned=state.coinPerTap*state.multiplier;state.coins+=earned;state.xp+=earned;
-    while(state.xp>=state.xpToNext){state.xp-=state.xpToNext;state.level++;state.xpToNext=Math.floor(100*Math.pow(1.25,state.level-1));state.coinPerTap=1+(state.level-1)*0.5;state.maxEnergy=100+(state.level-1)*10;state.energy=state.maxEnergy;showToast('🎉 升级！达到 Lv.'+state.level);coinRain(20)}
+    while(state.xp>=state.xpToNext){state.xp-=state.xpToNext;state.level++;state.xpToNext=Math.floor(100*Math.pow(1.25,state.level-1));state.coinPerTap=1+(state.level-1)*0.5;state.maxEnergy=100+(state.level-1)*10;state.energy=state.maxEnergy;showToast('🎉 升级！达�?Lv.'+state.level);coinRain(20)}
     var flash=document.createElement('div');flash.className='mine-flash';asteroid.appendChild(flash);setTimeout(function(){flash.remove()},200);
     var particle=document.createElement('div');particle.className='tap-particle';particle.textContent='+'+(Math.floor(earned));
     var rect=asteroid.getBoundingClientRect();var appRect=document.getElementById('app').getBoundingClientRect();
@@ -162,80 +162,87 @@ var ADSGRAM_BLOCK_ID = '31903'; // <-- 替换为ADSGRAM后台的Block ID
 
   // ===== ENERGY REGEN =====
   setInterval(function(){if(state.energy<state.maxEnergy){state.energy=Math.min(state.maxEnergy,state.energy+state.energyRegenRate);updateUI();saveGame()}},state.energyRegenInterval);
-  setInterval(function(){if(state.multiplier>1&&Date.now()>state.multiplierEnd){state.multiplier=1;state.multiplierTimer=null;showToast('⏱️ 加成已结束');updateUI();saveGame()}},1000);
+  setInterval(function(){if(state.multiplier>1&&Date.now()>state.multiplierEnd){state.multiplier=1;state.multiplierTimer=null;showToast('⏱️ 加成已结�?);updateUI();saveGame()}},1000);
 
   // ===== ADSGRAM: Rewarded Video =====
   function showWatchAdModal(){watchAdModal.classList.add('active')}
   function closeModal(){watchAdModal.classList.remove('active')}
 
-  function   < !DOCTYPE html>   函数 watchAd(){
+  function watchAd(){
     closeModal();
-    $('watchAdConfirm').disabled = true;$ (' watchAdConfirm ')。Disabled = true；
+    $('watchAdConfirm').disabled = true   真正的;   /html>；
 
-    if (window.Adsgram && ADSGRAM_BLOCK_ID !== '31903') {如果窗口。ADSGRAM_BLOCK_ID ！== '31903') {
+    if (window.Adsgram) {
       showToast('📺 正在加载广告...');
       try {   尝试{
-        Adsgram.init({ blockId: ADSGRAM_BLOCK_ID });Adsgram。init({blockId: ADSGRAM_BLOCK_ID})；
-        Adsgram.show({ type: 'reward' }).then(function(result){Adsgram。Show ({type: 'reward'}).then(function   函数(result){
-          $('watchAdConfirm').disabled = false;$ (' watchAdConfirm ')。Disabled = false；
-          if (result && result.done) { grantAdReward(); }如果(result && result。done) {grantAdReward()；……
-          else { showToast('⚠️ 广告未完成，请完整观看'); }
-        }).catch(function(err){   }) .catch(函数(err) {
-          $('watchAdConfirm').disabled = false;$ (' watchAdConfirm ')。Disabled = false；
-          console.log('Adsgram error:', err);console.log('Adsgram error:', err)；
+        Adsgram.init({ blockId: ADSGRAM_BLOCK_ID });Adsgram。init   Adsgram。初始化({blockId: ADSGRAM_BLOCK_ID})；
+        Adsgram.show({ type: 'reward' }).then(function(result){Adsgram。Show   Adsgram。显示 ({type   类型: 'reward'   “奖励”}).then   然后(function   函数(result   结果){
+          $('watchAdConfirm').disabled = false;$ (' watchAdConfirm '   ‘ watchAdConfirm ’)。Disabled   。禁用 = false；   虚假的;
+          if (result && result.done) { grantAdReward(); }如果(result   结果 && result。done   结果。完成) {grantAdReward()；……   … …
+          else { showToast('⚠️ 广告未完成，请完整观�?); }
+        }).catch(function(err){   }) .catch   抓(函数(err   犯错) {
+          $('watchAdConfirm').disabled = false;$ (' watchAdConfirm '   ‘ watchAdConfirm ’)。Disabled   。禁用 = false；   虚假的;
+          console.log('Adsgram error:', err);console   控制台.log   日志('Adsgram error:'   “Adsgram错误:”, err   犯错)；
           showToast('⚠️ 广告加载失败，请稍后再试');
         });
       } catch(e) {
-        $('watchAdConfirm').disabled = false;$ (' watchAdConfirm ')。Disabled = false；
+        $('watchAdConfirm').disabled = false;$ (' watchAdConfirm '   ‘ watchAdConfirm ’)。Disabled   。禁用 = false；   虚假的;
         showToast('⚠️ 广告暂不可用');
       }
     } else {
       // Fallback: no ADSGRAM configured// Fallback：未配置ADSGRAM
       showToast('📺 正在播放广告...');
-      setTimeout(function(){ grantAdReward(); $('watchAdConfirm').disabled = false; }, 1500);setTimeout(函数(){grantAdReward ();$ (' watchAdConfirm ')。Disabled = false；}, 1500);
+      setTimeout(function(){ grantAdReward(); $('watchAdConfirm').disabled = false; }, 1500);setTimeout(函数(){grantAdReward ();$ (' watchAdConfirm '   ‘ watchAdConfirm ’)。Disabled   。禁用 = false；   虚假的;}, 1500);
     }
   }
 
   function grantAdReward(){   函数grantAdReward () {
-    state.energy=state.maxEnergy;state.coins+=50;state.xp+=50;state.adWatchCount++;state.energy=state.maxEnergy;state.coins =50;state.xp =50;state.adWatchCount  ;
-    if(state.multiplierTimer)clearTimeout(state.multiplierTimer);如果state.multiplierTimer clearTimeout (state.multiplierTimer);
-    state.multiplier=2;state.multiplierEnd=Date.now()+10000;state.multiplier = 2; state.multiplierEnd =日期。现在(10000年);
-    showToast('🎉 奖励已领取！能量全满 + 50金币 + 2x加成10s！');coinRain(25);updateUI();saveGame();showToast('🎉 奖励已领取！能量全满   50金币   2x加成10s！');coinRain(25);updateUI();saveGame();
-    while(state.xp>=state.xpToNext){state.xp-=state.xpToNext;state.level++;state.xpToNext=Math.floor(100*Math.pow(1.25,state.level-1));state.coinPerTap=1+(state.level-1)*0.5;state.maxEnergy=100+(state.level-1)*10;state.energy=state.maxEnergy;showToast('🎉 升级！达到 Lv.'+state.level);coinRain(20)}while(state.xp>=state.xpToNext){state.xp-=state.xpToNext;state.level  ;state.xpToNext=Math.floor(100*Math.pow(1.25,state.level-1));state.coinPerTap=1 (state.level-1)*0.5;state.maxEnergy=100 (state.level-1)*10;state.energy=state.maxEnergy;showToast('🎉 升级！达到 Lv.' state.level);coinRain(20)}
+    state.energy=state.maxEnergy;state.coins+=50;state.xp+=50;state.adWatchCount++;state   状态.energy   能源=state   状态.maxEnergy;state   状态.coins   硬币 =50;state   状态.xp =50;state   状态.adWatchCount  ;
+    if(state.multiplierTimer)clearTimeout(state.multiplierTimer);如果state.multiplierTimer clearTimeout (state   状态.multiplierTimer);
+    state.multiplier=2;state.multiplierEnd=Date.now()+10000;state   状态.multiplier   乘数 = 2; state   状态.multiplierEnd =日期。现在(10000年);
+    showToast('🎉 奖励已领取！能量全满 + 50金币 + 2x加成10s�?);coinRain(25);updateUI();saveGame();
+    while(state.xp>=state.xpToNext){state.xp-=state.xpToNext;state.level++;state.xpToNext=Math.floor(100*Math.pow(1.25,state.level-1));state.coinPerTap=1+(state.level-1)*0.5;state.maxEnergy=100+(state.level-1)*10;state.energy=state.maxEnergy;showToast('🎉 升级！达�?Lv.'+state.level);coinRain(20)}
   }
 
   // ===== ADSGRAM: Banner =====
   function initBannerAd(){   函数initBannerAd () {
-    if (ADSGRAM_BLOCK_ID === 'YOUR_BLOCK_ID') { bannerAdText.textContent = '📢 横幅广告位 — 接入ADSGRAM后生效'; return; }
-    if (window.Adsgram && ADSGRAM_BLOCK_ID !== '31903') {如果窗口。ADSGRAM_BLOCK_ID ！== '31903') {
-      try {   尝试{
-        Adsgram.init({ blockId: ADSGRAM_BLOCK_ID });Adsgram。init({blockId: ADSGRAM_BLOCK_ID})；
-        Adsgram.showBanner({ container: '#bannerAd' });
-        bannerAdText.textContent = '';
-      } catch(e){   }捕捉(e) {
-        bannerAdText.textContent = '📢 横幅广告位';
-      }
+    if (window.Adsgram && typeof window.Adsgram.init === 'function') {
+        try {
+            Adsgram.init({ blockId: ADSGRAM_BLOCK_ID });
+            Adsgram.showBanner({ container: '#bannerAd' });
+            bannerAdText.textContent = '';
+            console.log('ADSGRAM banner loaded');
+        } catch(e){
+            bannerAdText.textContent = '横幅广告加载失败';
+            console.log('ADSGRAM banner error:', e);
+        }
     } else {
-      bannerAdText.textContent = '📢 横幅广告位 — 接入ADSGRAM后生效';bannerAdText.textContent = '📢 横幅广告位 — 接入ADSGRAM后生效';
+        bannerAdText.textContent = '横幅广告�?(ADSGRAM)';
     }
-  }
+}
+// Fallback: if SDK doesn't load in 5s, show placeholder
+setTimeout(function(){
+    if (bannerAdText.textContent === 'ADSGRAM 广告�?) {
+        bannerAdText.textContent = '横幅广告�?(ADSGRAM)';
+    }
+}, 5000);
 
   // ===== INIT =====   // ===== init =====
-  bannerAd.addEventListener('click',function(){showToast('📢 横幅广告位')});
+  bannerAd.addEventListener('click',function(){showToast('📢 横幅广告�?)});
 
-  function init(){   init()函数{
+  function init(){   init   初始化()函数{
     loadGame();
-    if(user.first_name){userName.textContent=user.first_name||'Miner';avatar.textContent=(user.first_name[0]||'👤').toUpperCase()}如果(user.first_name) {userName.textContent = user.first_name | |“矿工”;avatar.textContent = (user.first_name[0] | |👤).toUpperCase ()}
+    if(user.first_name){userName.textContent=user.first_name||'Miner';avatar.textContent=(user.first_name[0]||'👤').toUpperCase()}如果(user   用户.first_name) {userName   用户名.textContent = user   用户.first_name | |“矿工”;avatar   《阿凡达》.textContent = (user   用户.first_name[0] | |👤).toUpperCase   包含 ()}
     updateUI();
-    asteroid.addEventListener('pointerdown',handleTap);asteroid   小行星.addEventListener——handleTap pointerdown”;
+    asteroid.addEventListener('pointerdown',handleTap);asteroid   小行星.addEventListener——handleTapaddEventListener—本;handleTap pointerdown”      pointerdown”pointerdown”;
     $('adRewardBtn').addEventListener('click',showWatchAdModal);$ (' adRewardBtn ') .addEventListener(“点击”,showWatchAdModal);
-    $('watchAdConfirm').addEventListener('click',watchAd);$ (' watchAdConfirm ') .addEventListener(“点击”,watchAd);
-    $('watchAdCancel').addEventListener('click',closeModal);$ (' watchAdCancel ') .addEventListener(“点击”,closeModal);
+    $('watchAdConfirm').addEventListener('click',watchAd);$ (' watchAdConfirm '   ‘ watchAdConfirm ’) .addEventListener(“点击”,watchAd);
+    $('watchAdCancel').addEventListener('click',closeModal);$ (' watchAdCancel '   ‘ watchAdCancel ’) .addEventListener(“点击”,closeModal);
     watchAdModal.addEventListener('click',function(e){if(e.target===watchAdModal)closeModal()});watchAdModal.addEventListener(“点击”,函数(e){如果(e。target = = = watchAdModal) closeModal ()});
     setInterval(saveGame,10000);
     // Starfield   / /星际
     var sf=$('starfield');
-    for(var i=0;i<80;i++){var star=document.createElement('div');star.className='star';var size=1+Math.random()*2.5;star.style.width=size+'px';star.style.height=size+'px';star.style.left=Math.random()*100+'%';star.style.top=Math.random()*100+'%';star.style.setProperty('--dur',(2+Math.random()*4)+'s');star.style.animationDelay=Math.random()*4+'s';sf.appendChild(star)}for(var i=0;i<80;i){var star   明星=document.createElement('div');star   明星. classname ='star'；var size=1 Math.random()*2.5；宽度=大小的px; star   明星.style。身高=大小的px; star   明星.style   风格.left   左 =数学。随机()* 100‘%’;star   明星.style   风格.top   前 =数学。随机()* 100‘%’;star   明星.style。setProperty(——大调的,(2数学。随机()* 4)' s '); star   明星.style   风格.animationDelay =数学。随机()* 4 s   年代; sf.appendChild(明星)}
+    for(var i=0;i<80;i++){var star=document.createElement('div');star.className='star';var size=1+Math.random()*2.5;star.style.width=size+'px';star.style.height=size+'px';star.style.left=Math.random()*100+'%';star.style.top=Math.random()*100+'%';star.style.setProperty('--dur',(2+Math.random()*4)+'s');star.style.animationDelay=Math.random()*4+'s';sf.appendChild(star)}for(var i=0;i<80;i){var star   明星=document   文档.createElement('div');star   明星. classname ='star'；var size=1 Math   数学.random   随机()*2.5；宽度=大小的px; star   明星.style。身高=大小的px; star   明星.style   风格.left   左 =数学。随机()* 100‘%’;star   明星.style   风格.top   前 =数学。随机()* 100‘%’;star   明星.style。setProperty(——大调的,(2数学。随机()* 4)' s '); star   明星.style   风格.animationDelay =数学。随机()* 4 s   年代; sf.appendChild   列表末尾(明星)}
     // ADSGRAM banner   // ADSGRAM横幅
     setTimeout(initBannerAd, 2000);
   }
